@@ -433,34 +433,44 @@ def get_sentiment(comment):
     return sentiment
 
 # Step 5: Generate an email to be sent to the customer
-def get_email(comment, summary, sentiment):
-    system_message_email=comment+summary+sentiment
-    user_message_email=f"""
-    Please create an email to be sent to the customer based on the {comment}, {summary} and {sentiment}. Use HTML format."""
-    messages_email =  [  
-    {'role':'system', 
-    'content': system_message_email},    
-    {'role':'user', 
-    'content': f"{delimiter}{user_message_email}{delimiter}"},  
-    ] 
-    email=get_completion_from_messages(messages_email)
-    print("The email to be sent to the customer is as below:")
-    print(email+"\n")
-    return email
+def get_email(comment, subject, summary, sentiment):
+    system_message_email = comment + subject + summary + sentiment
+    user_message_email = f"""
+    Please create an email to be sent to the customer based on {comment}, including the {subject}, {summary} and {sentiment} with proper email format with subject and extra."""
+    messages_email = [
+        {'role': 'system',
+         'content': system_message_email},
+        {'role': 'user',
+         'content': f"{delimiter}{user_message_email}{delimiter}"},
+    ]
+    email = get_completion_from_messages(messages_email)
+    return email  # Return the email without printing it
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    comment = None
+    email = None
+    language = "English"  # Initialize the language variable here
+
     if request.method == 'POST':
         language = request.form['language']
         comment = generate_comment()
-        get_subject(comment)
-        summary= get_summary(comment)
-        get_translation(summary, language)
+        subject = get_subject(comment)
+        summary = get_summary(comment)
         sentiment = get_sentiment(comment)
-        email = get_email(comment, summary, sentiment)
-        return render_template('index.html', comment=comment, email=email, language=language)
-    return render_template('index.html', comment=None, email=None, language=None)
+        email = get_email(comment, subject, summary, sentiment)
 
+        # Check if the user wants to translate the comment and email
+        translate_comment = 'translate-comment' in request.form
+        translate_email = 'translate-email' in request.form
+
+        if translate_comment:
+            comment = get_translation(comment, language)
+
+        if translate_email:
+            email = get_translation(email, language)
+
+    return render_template('index.html', comment=comment, email=email, language=language)
 
 if __name__ == '__main__':
     app.run(debug=True)

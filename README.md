@@ -1,4 +1,22 @@
-# emailToCustomer_OpenAI
+# Customer Support System: An email to the customer
+
+## Project Settings
+1. You're a customer service assistant for a large electronics store
+2. The website of the store allows the customers to select language.
+3. The store's products
+    * Belong to different categories
+    * Each product has detailed description
+4. Desired interface:
+
+## Project Sections Step by Step
+### Step 1: Generate a customer's comment
+### Step 2: Generate email subject
+### Step 3: Generate the summary of the customer's comment
+### Step 4: Sentiment analysis of the customer's comment
+### Step 5: Generate an email to be sent to the customer.
+
+
+
 
 ![Screenshot 2023-10-02 030139](https://github.com/SharonCao0920/emailToCustomer_OpenAI/assets/54694766/2bfae268-04fa-4d70-b855-c93f0e3f662b)
 
