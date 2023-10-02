@@ -5,7 +5,7 @@ import openai
 app = Flask(__name__)
 
 # Set your OpenAI API key
-openai.api_key = "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"
+openai.api_key = ""
 
 # Define your delimiter
 delimiter = "####"
