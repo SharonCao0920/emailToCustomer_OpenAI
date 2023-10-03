@@ -1,4 +1,5 @@
 # Customer Support System: An email to the customer
+[Google Slides](https://docs.google.com/presentation/d/1aqFh4tzRhZ6w0nnEgkv_dZDaY8N0wDEi5jTru9reDCQ/edit?usp=sharing)
 
 ## Project Settings
 1. You're a customer service assistant for a large electronics store
@@ -7,6 +8,8 @@
     * Belong to different categories
     * Each product has detailed description
 4. Desired interface:
+![Screenshot 2023-10-02 114221](https://github.com/SharonCao0920/emailToCustomer_OpenAI/assets/54694766/0eb7af5f-297e-40d9-9874-ed4f435d6c45)
+
 
 ## Project Sections Step by Step
 ### Step 1: Generate a customer's comment
