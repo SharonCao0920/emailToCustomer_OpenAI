@@ -29,6 +29,8 @@
 
 ## Test Cases
 
+### **To run the project: $ python3 app.py**
+
 ![image](https://github.com/SharonCao0920/emailToCustomer_OpenAI/assets/54694766/1e4bf04f-3596-46a7-8905-b69f388fc8bd)
 
 ### English <-> English
