@@ -49,6 +49,7 @@ Use Flask framework to convert the code into web based application.
 Use ChatGPT to fine tune the project to look better.
 
 <br/>
+
 ## Test Cases
 
 ### **To run the project: $ python3 app.py**
