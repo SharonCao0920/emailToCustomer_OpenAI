@@ -27,6 +27,27 @@
 ### Step 5: Generate an email to be sent to the customer.
 ![image](https://github.com/SharonCao0920/emailToCustomer_OpenAI/assets/54694766/b31b5ec4-3b2e-4219-8873-5c6513082826)
 
+## Project Implementation Tips
+
+### 1. Step by Step
+Follow the steps, achieve the results one by one
+
+### 2.Simple Code
+Write simple code blocks for each steps
+
+### 3. Playground
+Use OpenAI playground to pre-test the result of the model get back. https://platform.openai.com/playground 
+![image](https://github.com/SharonCao0920/emailToCustomer_OpenAI/assets/54694766/05392253-b9c4-4905-88b9-8f9e46f195de)
+
+### 4. Combine the Blocks
+Combine the chain of code together and test result.
+
+### 5. Convert Code to Project
+Use Flask framework to convert the code into web based application.
+
+### 6. Use ChatGPT
+Use ChatGPT to fine tune the project to look better.
+
 ## Test Cases
 
 ### **To run the project: $ python3 app.py**
