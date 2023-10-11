@@ -1,11 +1,12 @@
 from flask import Flask, request, render_template
 import os
 import openai
+import utils
 
 app = Flask(__name__)
 
 # Set your OpenAI API key
-openai.api_key = os.getenv("OPENAI_API_KEY")
+openai.api_key  = utils.get_OpenAI_API_Key()
 
 # Define your delimiter
 delimiter = "####"
