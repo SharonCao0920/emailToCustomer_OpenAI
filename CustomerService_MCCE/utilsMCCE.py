@@ -224,6 +224,7 @@ def check_Output_self_evaluate(customer_message, final_response_to_customer):
 
     response = utils.get_completion_from_messages(messages, max_tokens=1)
     return response
+
 def find_category_and_product_v1(user_input,products_and_category):
 
     delimiter = "####"
@@ -257,7 +258,7 @@ def find_category_and_product_v1(user_input,products_and_category):
     few_shot_user_1 = """I want the most expensive computer."""
     few_shot_assistant_1 = """ 
     [{'category': 'Computers and Laptops', \
-'products': ['TechPro Ultrabook', 'BlueWave Gaming Laptop', 'PowerLite Convertible', 'TechPro Desktop', 'BlueWave Chromebook']}]
+    'products': ['TechPro Ultrabook', 'BlueWave Gaming Laptop', 'PowerLite Convertible', 'TechPro Desktop', 'BlueWave Chromebook']}]
     """
     
     messages =  [  
@@ -270,13 +271,6 @@ def find_category_and_product_v1(user_input,products_and_category):
 
 
 def find_category_and_product_v2(user_input,products_and_category):
-    """
-    Added: Do not output any additional text that is not in JSON format.
-    Added a second example (for few-shot prompting) where user asks for 
-    the cheapest computer. In both few-shot examples, the shown response 
-    is the full list of products in JSON only.
-    """
-    delimiter = "####"
     system_message = f"""
     You will be provided with customer service queries. \
     The customer service query will be delimited with {delimiter} characters.
@@ -309,13 +303,13 @@ def find_category_and_product_v2(user_input,products_and_category):
     few_shot_user_1 = """I want the most expensive computer. What do you recommend?"""
     few_shot_assistant_1 = """ 
     [{'category': 'Computers and Laptops', \
-'products': ['TechPro Ultrabook', 'BlueWave Gaming Laptop', 'PowerLite Convertible', 'TechPro Desktop', 'BlueWave Chromebook']}]
+    'products': ['TechPro Ultrabook', 'BlueWave Gaming Laptop', 'PowerLite Convertible', 'TechPro Desktop', 'BlueWave Chromebook']}]
     """
     
     few_shot_user_2 = """I want the most cheapest computer. What do you recommend?"""
     few_shot_assistant_2 = """ 
     [{'category': 'Computers and Laptops', \
-'products': ['TechPro Ultrabook', 'BlueWave Gaming Laptop', 'PowerLite Convertible', 'TechPro Desktop', 'BlueWave Chromebook']}]
+    'products': ['TechPro Ultrabook', 'BlueWave Gaming Laptop', 'PowerLite Convertible', 'TechPro Desktop', 'BlueWave Chromebook']}]
     """
     
     messages =  [  
@@ -330,10 +324,7 @@ def find_category_and_product_v2(user_input,products_and_category):
 
 # Evaluate Response with ideal answers
 import json
-def eval_response_with_ideal(response,
-                              ideal,
-                              debug=False):
-    
+def eval_response_with_ideal(response,ideal,debug=False):
     if debug:
         print("response")
         print(response)
@@ -483,7 +474,7 @@ def eval_vs_ideal(test_set, assistant_answer):
     """
 
     user_message = f"""\
-You are comparing a submitted answer to an expert answer on a given question. Here is the data:
+    You are comparing a submitted answer to an expert answer on a given question. Here is the data:
     [BEGIN DATA]
     ************
     [Question]: {cust_msg}
@@ -494,14 +485,14 @@ You are comparing a submitted answer to an expert answer on a given question. He
     ************
     [END DATA]
 
-Compare the factual content of the submitted answer with the expert answer. Ignore any differences in style, grammar, or punctuation.
+    Compare the factual content of the submitted answer with the expert answer. Ignore any differences in style, grammar, or punctuation.
     The submitted answer may either be a subset or superset of the expert answer, or it may conflict with it. Determine which case applies. Answer the question by selecting one of the following options:
     (A) The submitted answer is a subset of the expert answer and is fully consistent with it.
     (B) The submitted answer is a superset of the expert answer and is fully consistent with it.
     (C) The submitted answer contains all the same details as the expert answer.
     (D) There is a disagreement between the submitted answer and the expert answer.
     (E) The answers differ, but these differences don't matter from the perspective of factuality.
-  choice_strings: ABCDE
+    choice_strings: ABCDE
 """
 
     messages = [
